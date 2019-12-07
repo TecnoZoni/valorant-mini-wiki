@@ -352,9 +352,22 @@ footer {
     height: 100%;
     background-color: #00000085;
 }
-.cerrar{
+
+.cerrar {
+    position: fixed;
+    width: 3rem;
+    right: 0;
+    margin: 1rem;
+    cursor: pointer;
+}
+
+.cerrar polygon {
     fill: #fff;
 }
+.cerrar:hover{
+    transform: scale(1.1);
+}
+
 
 
 /* Estilos responsivos */
