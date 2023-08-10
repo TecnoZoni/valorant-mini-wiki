@@ -1,0 +1,399 @@
+@font-face {
+    font-family: 'Proxima Nova Bold';
+    src: url(./font/Fontspring-DEMO-proximanova-bold.otf);
+    font-weight: bold;
+    font-style: bold;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background: #000;
+}
+
+.header {
+    background-color: #111;
+    width: 100%;
+    height: 100px;
+    color: #fff;
+    font-family: 'Proxima Nova Bold';
+    font-size: 1.3rem;
+    overflow: hidden;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    z-index: 4;
+    top: 0;
+}
+
+.logos-header {
+    width: fit-content;
+    max-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin: 0 0 0 25px;
+}
+
+.logo-riot-header {
+    width: 100px;
+    height: 95px;
+    margin: 0 25px;
+    fill: #fff;
+}
+
+.logo-riot-header:hover {
+    cursor: pointer;
+    fill: #f00;
+    transition: all 0.5s ease;
+}
+
+.logo-valorant-header {
+    width: 30px;
+    height: 50px;
+    margin: 0 25px;
+    fill: #fff;
+}
+
+.logo-valorant-header:hover {
+    cursor: pointer;
+    fill: #f00;
+    transition: all 0.5s ease;
+}
+
+.list-menu {
+    width: 50%;
+}
+
+.list-menu ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+a:hover {
+    cursor: pointer;
+    color: #f00;
+    transition: all 0.5s ease;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+
+.cover {
+    width: 100%;
+    height: 60vh;
+    margin-top: 100px;
+}
+
+.cover-video {
+    position: absolute;
+    width: 100%;
+    height: 60vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cover-video video {
+    min-width: 100%;
+    min-height: 60vh;
+}
+
+.cover-overlay {
+    width: 100%;
+    height: 60vh;
+    position: absolute;
+    z-index: 1;
+    opacity: .7;
+    overflow: hidden;
+}
+
+.cover-content {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cover-content p {
+    font-size: 1rem;
+    margin: 0;
+    font-family: 'Proxima Nova Bold';
+    color: #fff;
+    text-shadow: #000 2px 1px;
+}
+
+.cover-content img {
+    width: 60%;
+    margin: 0;
+    filter: drop-shadow(#000 4px 2px);
+}
+
+.agent-section {
+    background-color: #fff;
+    min-width: 100%;
+    font-family: 'Proxima Nova Bold';
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+h2 {
+    font-size: 2rem;
+    width: 100%;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.agent-container {
+    width: 90%;
+    display: grid;
+    grid-auto-rows: 17rem;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 0.8rem;
+    justify-items: center;
+}
+
+.card-agent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    box-shadow: #000 5px 5px;
+    border: solid #000 1px;
+    width: 30vh;
+    height: fit-content;
+    margin: 0 1rem;
+}
+
+.card-agent-img {
+    border-radius: 1rem;
+    width: 100%;
+    height: auto;
+    padding: 0 0.5rem;
+}
+
+.card-agent-img img {
+    width: 10vw;
+}
+
+.card-agent-name {
+    margin: auto;
+    text-transform: uppercase;
+}
+
+.card-agent:hover {
+    cursor: pointer;
+    background-color: #f00;
+    color: #fff;
+    box-shadow: #000 -2px 1px;
+    transform: scale(1.05);
+    transition: ease 0.3s;
+}
+
+.map-section {
+    background-color: #111;
+    width: 100%;
+    font-family: 'Proxima Nova Bold';
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    color: #fff;
+}
+
+.map-container {
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+}
+
+.card-map {
+    color: #000;
+    background-color: #fff;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.card-map:hover {
+    transform: scale(1.05);
+    transition: ease 0.3s;
+}
+
+.card-map-name {
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.card-map-img {
+    border-radius: 1rem;
+    width: 100%;
+    height: auto;
+}
+
+.card-map img {
+    width: 35vw;
+    height: auto;
+}
+
+.arsenal-section {
+    background-color: #fff;
+    width: 100%;
+    font-family: 'Proxima Nova Bold';
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    color: #111;
+}
+
+.arsenal-container {
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    justify-items: center;
+}
+
+.card-arsenal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    box-shadow: #000 5px 5px;
+    border: solid #000 1px;
+    width: 300px;
+    height: fit-content;
+}
+
+.card-arsenal:hover {
+    transform: scale(1.05);
+    transition: ease 0.3s;
+}
+
+.card-arsenal-img {
+    width: fit-content;
+    height: 10vh;
+    padding: 1rem;
+}
+
+.sobremi-section {
+    background-color: #111;
+    width: 100%;
+    font-family: 'Proxima Nova Bold';
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    color: #fff;
+}
+
+.sobremi-container {
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.miImagen img {
+    width: 300px;
+    height: auto;
+    border-radius: 2rem;
+}
+
+.sobremi-infoContainer {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sobremi-infoContainer h3 {
+    font-size: 1.8rem;
+    width: 100%;
+    text-align: center;
+}
+
+.sobremi-infoContainer p {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.sobremi-infoContainer a {
+    color: #f00;
+}
+
+.icon-container {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.icon-container a {
+    width: fit-content;
+    margin: 0 1rem;
+}
+
+.icon-container a img {
+    width: 50px;
+    height: auto;
+}
+
+footer {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+}
+
+@media only screen and (max-width:1120px) {
+    .arsenal-container {
+        /* width: 90%; */
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        /* justify-items: center; */
+    }
+}
