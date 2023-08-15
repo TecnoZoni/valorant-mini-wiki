@@ -390,10 +390,17 @@ footer {
 
 @media only screen and (max-width:1120px) {
     .arsenal-container {
-        /* width: 90%; */
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 1.5rem;
-        /* justify-items: center; */
+    }
+}
+
+@media only screen and (max-width:950px) {
+    header{
+        visibility: hidden;
+    }
+    .cover{
+        margin-top: 0;
     }
 }
