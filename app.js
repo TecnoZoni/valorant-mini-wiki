@@ -7,6 +7,9 @@ const urlMapas = 'https://valorant-api.com/v1/maps/?language=es-MX';
 const arsenalContainer = document.getElementById('arsenal');
 const urlArsenal = 'https://valorant-api.com/v1/weapons/?language=es-MX';
 
+const botonMenu = document.getElementById('movil-menu');
+const headerMenu = document.getElementById('header-menu');
+
 //peticion a la API pidiendo la informacion
 //tomo la respuesta y la trasnformo en JSON, luego la muestro en consola para saber como llega la informacion y por ultimo con un ciclo forEach empiezo a tomar los datos y a crear las Tarjetas de los diferentes agentes, mapas y arsenal.
 fetch(urlAgents)
@@ -81,3 +84,18 @@ fetch(urlArsenal)
             arsenalContainer.appendChild(CardArsenal);
     })
 })
+
+function abrirMenu(){
+    const estadoMenu =headerMenu.classList.contains('active');
+    if (estadoMenu) {
+        headerMenu.classList.remove('active');
+
+        // const svgBotonMenu = botonMenu.appendChild;
+        //     svgBotonMenu.
+
+    } else {
+        headerMenu.classList.add('active');
+    }
+}
+
+botonMenu.addEventListener('click', abrirMenu)

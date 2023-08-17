@@ -319,7 +319,7 @@ footer {
     text-align: center;
 }
 
-.movil-menu{
+.movil-menu-button {
     position: absolute;
     bottom: 5%;
     right: 13%;
@@ -331,6 +331,10 @@ footer {
     align-items: center;
     border-radius: 50%;
     visibility: hidden;
+}
+
+.agregado {
+    fill: #f00;
 }
 
 @media only screen and (max-width:1120px) {
@@ -346,6 +350,7 @@ footer {
         width: 35%;
         height: 100%;
         right: 0;
+        transition: right 1s ease;
     }
 
     .content {
@@ -386,11 +391,11 @@ footer {
         gap: 1.5rem;
     }
 
-    .movil-menu{
+    .movil-menu-button {
         visibility: unset;
     }
 
-    .active{
-        
+    .active {
+        right: -100%;
     }
 }
