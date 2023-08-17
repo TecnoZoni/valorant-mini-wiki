@@ -217,7 +217,7 @@ h2 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
+    padding: 1rem 1rem 2rem;
     color: #fff;
 }
 
@@ -258,7 +258,7 @@ h2 {
 }
 
 .card-map img {
-    width: 35vw;
+    width: 80%;
     height: auto;
 }
 
