@@ -33,6 +33,7 @@ fetch(urlAgents)
             CardAgent.appendChild(nameAgent);
 
             agentsContainer.appendChild(CardAgent);
+
         });
     })
     .catch(err => console.log(err))
@@ -62,12 +63,12 @@ fetch(urlMapas)
     })
 
 fetch(urlArsenal)
-.then(response => response.json())
-.then(data=>{
-    console.log(data);
-    data.data.forEach(arma =>{
-        const CardArsenal = document.createElement('div');
-        CardArsenal.classList.add("card-arsenal");
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        data.data.forEach(arma => {
+            const CardArsenal = document.createElement('div');
+            CardArsenal.classList.add("card-arsenal");
 
             const nameArsenal = document.createElement('h3');
             nameArsenal.classList.add("card-arsenal-name");
@@ -82,17 +83,14 @@ fetch(urlArsenal)
             CardArsenal.appendChild(imgArsenal);
 
             arsenalContainer.appendChild(CardArsenal);
+        })
     })
-})
 
-function abrirMenu(){
-    const estadoMenu =headerMenu.classList.contains('active');
+
+function abrirMenu() {
+    const estadoMenu = headerMenu.classList.contains('active');
     if (estadoMenu) {
         headerMenu.classList.remove('active');
-
-        // const svgBotonMenu = botonMenu.appendChild;
-        //     svgBotonMenu.
-
     } else {
         headerMenu.classList.add('active');
     }
