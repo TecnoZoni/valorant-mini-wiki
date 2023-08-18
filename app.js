@@ -10,6 +10,10 @@ const urlArsenal = 'https://valorant-api.com/v1/weapons/?language=es-MX';
 const botonMenu = document.getElementById('movil-menu');
 const headerMenu = document.getElementById('header-menu');
 
+const modalAgent = document.getElementById('modal-agent')
+
+const botonCerrar = document.getElementById('botonCerrar');
+
 //peticion a la API pidiendo la informacion
 //tomo la respuesta y la trasnformo en JSON, luego la muestro en consola para saber como llega la informacion y por ultimo con un ciclo forEach empiezo a tomar los datos y a crear las Tarjetas de los diferentes agentes, mapas y arsenal.
 fetch(urlAgents)
@@ -17,13 +21,13 @@ fetch(urlAgents)
     .then(data => {
         console.log(data);
         data.data.forEach(agents => {
+            // CARGANDO AGENTES A LA PAGINA //
             const CardAgent = document.createElement('div');
-            CardAgent.classList.add("card-agent");
-
             const imgAgent = document.createElement('img');
-            imgAgent.classList.add("card-agent-img");
-
             const nameAgent = document.createElement('h3');
+
+            CardAgent.classList.add("card-agent");
+            imgAgent.classList.add("card-agent-img");
             nameAgent.classList.add("card-agent-name");
 
             imgAgent.setAttribute('src', agents.displayIcon)
@@ -31,8 +35,35 @@ fetch(urlAgents)
 
             CardAgent.appendChild(imgAgent);
             CardAgent.appendChild(nameAgent);
-
             agentsContainer.appendChild(CardAgent);
+            // CARGANDO AGENTES A LA PAGINA //
+
+            //MODAL DE LOS AGENTES//
+            CardAgent.addEventListener('click', () => {
+                const modalName = document.getElementById('modalName');
+                const modalDescipt = document.getElementById('modalDescipt');
+                const containHabil = document.getElementById('containHabil');
+                const containImg = document.getElementById('containImg');
+                const imgModalAgent = document.getElementById('imgModalAgent');
+
+                modalName.innerText = agents.displayName;
+                modalDescipt.innerText = agents.description;
+
+                containImg.style.backgroundImage = `url('${agents.background}')`;
+                containImg.style.backgroundSize = 'cover';
+                containImg.style.backgroundPosition = 'center'
+
+                imgModalAgent.setAttribute('src', agents.fullPortraitV2);
+
+                agents.abilities.forEach(habilidad =>{
+                    console.log(habilidad);
+                    const slotHabilidad = document.createElement('div');
+                    const logoHabilidad = document.createElement('img');
+                    
+                })
+
+                modalAgent.style.display = 'block';
+            })
 
         });
     })
@@ -97,3 +128,7 @@ function abrirMenu() {
 }
 
 botonMenu.addEventListener('click', abrirMenu)
+
+botonCerrar.addEventListener('click', () => {
+    modalAgent.style.display = 'none';
+})

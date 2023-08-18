@@ -364,10 +364,40 @@ footer {
 .cerrar polygon {
     fill: #fff;
 }
-.cerrar:hover{
+
+.cerrar:hover {
     transform: scale(1.1);
 }
 
+.container-modal {
+    position: fixed;
+    background: #fff;
+    width: 90%;
+    height: 90%;
+    right: 5%;
+    top: 7%;
+    border-radius: 2rem;
+    margin: .5rem;
+    box-shadow: #000 3px 5px 1rem;
+    display: flex;
+}
+
+.modal-info {
+    width: 50%;
+}
+
+.modal-img {
+    background: #000;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    border-radius: 0 2rem 2rem 0;
+}
+
+.modal-img img {
+    filter: drop-shadow(1px 4px 8px rgba(255, 150, 0, 5));
+}
 
 
 /* Estilos responsivos */
