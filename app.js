@@ -46,11 +46,13 @@ fetch(urlAgents)
                 containImg.innerHTML = '';
 
                 const modalName = document.createElement('h2');
+                const modalNameHabilidades = document.createElement('h2');
                 const modalDescipt = document.createElement('p');
                 const containHabil = document.createElement('div');
                 const imgModalAgent = document.createElement('img');
 
                 modalName.classList.add('modal-h2-name');
+                modalNameHabilidades.classList.add('modal-h2-name');
                 modalDescipt.classList.add('modal-parrafo');
                 containHabil.classList.add('modal-habilidades');
                 containImg.style.backgroundImage = `url('${agents.background}')`;
@@ -58,12 +60,14 @@ fetch(urlAgents)
                 containImg.style.backgroundPosition = 'center'
 
                 modalName.innerText = agents.displayName;
+                modalNameHabilidades.innerText = "Habilidades";
                 modalDescipt.innerText = agents.description;
 
                 imgModalAgent.setAttribute('src', agents.fullPortraitV2);
 
                 containInfo.appendChild(modalName);
                 containInfo.appendChild(modalDescipt);
+                containInfo.appendChild(modalNameHabilidades);
                 containInfo.appendChild(containHabil);
                 containImg.appendChild(imgModalAgent);
 
