@@ -10,7 +10,7 @@ const urlArsenal = 'https://valorant-api.com/v1/weapons/?language=es-MX';
 const botonMenu = document.getElementById('movil-menu');
 const headerMenu = document.getElementById('header-menu');
 
-const modalAgent = document.getElementById('modal-agent')
+const modal = document.getElementById('modal-agent')
 
 const botonCerrar = document.getElementById('botonCerrar');
 
@@ -40,31 +40,51 @@ fetch(urlAgents)
 
             //MODAL DE LOS AGENTES//
             CardAgent.addEventListener('click', () => {
-                const modalName = document.getElementById('modalName');
-                const modalDescipt = document.getElementById('modalDescipt');
-                const containHabil = document.getElementById('containHabil');
+                const containInfo = document.getElementById('containInfo');
                 const containImg = document.getElementById('containImg');
-                const imgModalAgent = document.getElementById('imgModalAgent');
+                containInfo.innerHTML = '';
+                containImg.innerHTML = '';
 
-                modalName.innerText = agents.displayName;
-                modalDescipt.innerText = agents.description;
+                const modalName = document.createElement('h2');
+                const modalDescipt = document.createElement('p');
+                const containHabil = document.createElement('div');
+                const imgModalAgent = document.createElement('img');
 
+                modalName.classList.add('modal-h2-name');
+                modalDescipt.classList.add('modal-parrafo');
+                containHabil.classList.add('modal-habilidades');
                 containImg.style.backgroundImage = `url('${agents.background}')`;
                 containImg.style.backgroundSize = 'cover';
                 containImg.style.backgroundPosition = 'center'
 
+                modalName.innerText = agents.displayName;
+                modalDescipt.innerText = agents.description;
+
                 imgModalAgent.setAttribute('src', agents.fullPortraitV2);
 
-                agents.abilities.forEach(habilidad =>{
+                containInfo.appendChild(modalName);
+                containInfo.appendChild(modalDescipt);
+                containInfo.appendChild(containHabil);
+                containImg.appendChild(imgModalAgent);
+
+                agents.abilities.forEach(habilidad => {
                     console.log(habilidad);
                     const slotHabilidad = document.createElement('div');
+                    const nameHabilidad = document.createElement('h3')
                     const logoHabilidad = document.createElement('img');
-                    
+
+                    nameHabilidad.innerText = habilidad.displayName;
+                    logoHabilidad.setAttribute('src', habilidad.displayIcon)
+
+                    slotHabilidad.appendChild(nameHabilidad);
+                    slotHabilidad.appendChild(logoHabilidad);
+                    containHabil.appendChild(slotHabilidad);
+
+                    slotHabilidad.classList.add('habilidad');
                 })
 
-                modalAgent.style.display = 'block';
+                modal.style.display = 'block';
             })
-
         });
     })
     .catch(err => console.log(err))
@@ -130,5 +150,6 @@ function abrirMenu() {
 botonMenu.addEventListener('click', abrirMenu)
 
 botonCerrar.addEventListener('click', () => {
-    modalAgent.style.display = 'none';
+
+    modal.style.display = 'none';
 })
