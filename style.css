@@ -391,13 +391,14 @@ footer {
     align-items: center;
     padding: 1rem;
 }
-.modal-parrafo{
+
+.modal-parrafo {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     font-size: 1.5rem;
 }
 
-.modal-habilidades{
+.modal-habilidades {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
@@ -407,14 +408,16 @@ footer {
     border-radius: 1rem;
 }
 
-.habilidad{
+.habilidad {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
 }
 
-.habilidad img{
+.habilidad img {
     width: 7vw;
     height: auto;
 }
@@ -442,6 +445,10 @@ footer {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 1.5rem;
+    }
+
+    .habilidad {
+        font-size: .7rem;
     }
 }
 
@@ -498,24 +505,62 @@ footer {
     .active {
         right: -100%;
     }
+
+    .habilidad {
+        font-size: .5rem;
+    }
 }
 
 @media only screen and (max-width:830px) {
     .cover-gif {
         align-items: unset;
     }
-    .container-modal{
+
+    .container-modal {
         flex-direction: column;
         height: 90%;
         overflow-y: scroll;
     }
 
-    .modal-info{
+    .modal-info {
         width: 100%;
+        height: unset;
     }
 
-    .modal-img{
+    .modal-img {
         width: 100%;
         border-radius: 0;
+    }
+
+    .modal-img img{
+        height: auto;
+    }
+
+    .habilidad {
+        font-size: 1rem;
+    }
+
+    .habilidad img {
+        width: 10vw;
+    }
+
+    .modal-habilidades {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+@media only screen and (max-width:500px) {
+    .modal-parrafo {
+        font-size: 1rem;
+    }
+
+    .modal-img img {
+        width: 90vw;
+        height: auto;
+    }
+
+    .habilidad img {
+        width: 10vh;
     }
 }
