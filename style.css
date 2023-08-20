@@ -438,6 +438,16 @@ footer {
     filter: drop-shadow(1px 4px 8px rgba(0, 0, 0, 1));
 }
 
+.modal-info-map{
+    width: 100%;
+    height: auto;
+}
+
+.modal-img-map{
+    width: 100%;
+    height: auto;
+}
+
 
 /* Estilos responsivos */
 @media only screen and (max-width:1120px) {

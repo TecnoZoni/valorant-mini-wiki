@@ -114,6 +114,33 @@ fetch(urlMapas)
             CardMap.appendChild(imgMap);
 
             mapasContainer.appendChild(CardMap);
+
+            //MODAL DE MAPAS
+            CardMap.addEventListener('click',()=>{
+                const containInfo = document.getElementById('containInfo');
+                const containImg = document.getElementById('containImg');
+                containInfo.innerHTML = '';
+                containImg.innerHTML = '';
+
+                const modalName = document.createElement('h2');
+                const imgInfoMap = document.createElement('img')
+                const imgModalMaps = document.createElement('img');
+
+                modalName.classList.add('modal-h2-name');
+                modalName.innerText = maps.displayName;
+
+                imgInfoMap.classList.add('modal-info-map')
+                imgModalMaps.classList.add('modal-img-map')
+
+                imgInfoMap.setAttribute('src', maps.displayIcon)
+                imgModalMaps.setAttribute('src', maps.splash);
+
+                containInfo.appendChild(modalName);
+                containInfo.appendChild(imgInfoMap);
+                containImg.appendChild(imgModalMaps);
+
+                modal.style.display = 'block';
+            })
         })
     })
 
