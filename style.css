@@ -161,6 +161,7 @@ a {
 }
 
 h2 {
+    font-family: 'Proxima Nova Bold';
     font-size: 2rem;
     width: 100%;
     text-align: center;
@@ -351,6 +352,7 @@ footer {
     width: 100%;
     height: 100%;
     background-color: #00000085;
+    display: none;
 }
 
 .cerrar {
@@ -380,6 +382,9 @@ footer {
     margin: .5rem;
     box-shadow: #000 3px 5px 1rem;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
 }
 
 .modal-info {
@@ -425,7 +430,6 @@ footer {
 .modal-img {
     background: #000;
     width: 50%;
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -433,10 +437,50 @@ footer {
 }
 
 .modal-img img {
-    width: 80vw;
     height: 90vh;
     filter: drop-shadow(1px 4px 8px rgba(0, 0, 0, 1));
 }
+
+.modal-info-map {
+    width: 100%;
+    height: auto;
+}
+
+.modal-img-map {
+    width: 100%;
+}
+
+.modal-img-map img {
+    width: 100vh;
+}
+
+.modal-arsenal {
+    width: 50%;
+    right: 25%;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.divStats {
+    width: fit-content;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.3rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    color: #fff;
+    background-color: #111;
+    box-shadow: #00000085 5px 5px 8px;
+}
+
+.divStats ul{
+    list-style: none;
+}
+
+.imgArsenal{
+    width: 90%;
+    filter: drop-shadow( #00000085 5px 5px 8px);
+}
+
 
 
 /* Estilos responsivos */
@@ -518,7 +562,7 @@ footer {
 
     .container-modal {
         flex-direction: column;
-        height: 90%;
+        /* height: 90%; */
         overflow-y: scroll;
     }
 
@@ -530,10 +574,6 @@ footer {
     .modal-img {
         width: 100%;
         border-radius: 0;
-    }
-
-    .modal-img img {
-        height: auto;
     }
 
     .habilidad {
@@ -551,15 +591,15 @@ footer {
 }
 
 @media only screen and (max-width:500px) {
-.container-modal{
-    overflow-x: hidden;
-}
+    .container-modal {
+        overflow-x: hidden;
+    }
 
     .modal-parrafo {
         font-size: 1rem;
     }
 
-    .modal-img{
+    .modal-img {
         width: 100%;
         height: unset;
     }
@@ -570,6 +610,10 @@ footer {
     }
 
     .habilidad img {
-        width: 10vh;
+        width: 5vh;
+    }
+
+    .divStats{
+        font-size: 0.9rem;
     }
 }
