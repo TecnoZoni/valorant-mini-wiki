@@ -1,19 +1,15 @@
 const agentsContainer = document.getElementById('agentes');
 const urlAgents = 'https://valorant-api.com/v1/agents/?language=es-MX&isPlayableCharacter=true';
-
 const mapasContainer = document.getElementById('mapas');
 const urlMapas = 'https://valorant-api.com/v1/maps/?language=es-MX';
-
 const arsenalContainer = document.getElementById('arsenal');
 const urlArsenal = 'https://valorant-api.com/v1/weapons/?language=es-MX';
-
 const botonMenu = document.getElementById('movil-menu');
 const headerMenu = document.getElementById('header-menu');
-
-const modal = document.getElementById('modal-agent')
-
+const modal = document.getElementById('modal')
+const containInfo = document.getElementById('containInfo');
+const containImg = document.getElementById('containImg');
 const botonCerrar = document.getElementById('botonCerrar');
-
 //peticion a la API pidiendo la informacion
 //tomo la respuesta y la trasnformo en JSON, luego la muestro en consola para saber como llega la informacion y por ultimo con un ciclo forEach empiezo a tomar los datos y a crear las Tarjetas de los diferentes agentes, mapas y arsenal.
 fetch(urlAgents)
@@ -40,10 +36,8 @@ fetch(urlAgents)
 
             //MODAL DE LOS AGENTES//
             CardAgent.addEventListener('click', () => {
-                const containInfo = document.getElementById('containInfo');
-                const containImg = document.getElementById('containImg');
-                containInfo.innerHTML = '';
-                containImg.innerHTML = '';
+                containInfo.classList.add('modal-info');
+                containImg.classList.add('modal-img');
 
                 const modalName = document.createElement('h2');
                 const modalNameHabilidades = document.createElement('h2');
@@ -114,6 +108,26 @@ fetch(urlMapas)
             CardMap.appendChild(imgMap);
 
             mapasContainer.appendChild(CardMap);
+
+            CardMap.addEventListener('click', () => {
+                containInfo.classList.add('containInfoMap');
+                containImg.classList.add('containImgMap');
+
+                const mapName = document.createElement('h2');
+                mapName.innerText = maps.displayName;
+                const infoMap = document.createElement('img');
+                infoMap.setAttribute('src', maps.displayIcon);
+                infoMap.classList.add('infoMap');
+                const imgMap = document.createElement('img');
+                imgMap.setAttribute('src', maps.splash);
+                imgMap.classList.add('imgMap');
+
+                containInfo.appendChild(mapName);
+                containInfo.appendChild(infoMap);
+                containImg.appendChild(imgMap);
+
+                modal.style.display = 'block';
+            })
         })
     })
 
@@ -155,5 +169,15 @@ botonMenu.addEventListener('click', abrirMenu)
 
 botonCerrar.addEventListener('click', () => {
 
+    const claseModalAgent1 = containInfo.classList.contains('modal-info');
+    const claseModalAgent2 = containImg.classList.contains('modal-img');
+
+    if (claseModalAgent1 || claseModalAgent2) {
+        containInfo.classList.remove('modal-info')
+        containImg.classList.remove('modal-img')
+    }
+    
+    containInfo.innerHTML = '';
+    containImg.innerHTML = '';
     modal.style.display = 'none';
 })
