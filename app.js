@@ -11,6 +11,7 @@ const botonMenu = document.getElementById('movil-menu');
 const headerMenu = document.getElementById('header-menu');
 
 const modal = document.getElementById('modal')
+const containerModal = document.querySelector('.container-modal');
 
 const botonCerrar = document.getElementById('botonCerrar');
 
@@ -40,8 +41,10 @@ fetch(urlAgents)
 
             //MODAL DE LOS AGENTES//
             CardAgent.addEventListener('click', () => {
-                const containInfo = document.getElementById('containInfo');
-                const containImg = document.getElementById('containImg');
+                const containInfo = document.createElement('div');
+                containInfo.classList.add('modal-info')
+                const containImg = document.createElement('div');
+                containImg.classList.add('modal-img')
                 containInfo.innerHTML = '';
                 containImg.innerHTML = '';
 
@@ -87,6 +90,8 @@ fetch(urlAgents)
                     slotHabilidad.classList.add('habilidad');
                 })
 
+                containerModal.appendChild(containInfo);
+                containerModal.appendChild(containImg);
                 modal.style.display = 'block';
             })
         });
@@ -116,7 +121,7 @@ fetch(urlMapas)
             mapasContainer.appendChild(CardMap);
 
             //MODAL DE MAPAS
-            CardMap.addEventListener('click',()=>{
+            CardMap.addEventListener('click', () => {
                 const containInfo = document.getElementById('containInfo');
                 const containImg = document.getElementById('containImg');
                 containInfo.innerHTML = '';
@@ -166,39 +171,58 @@ fetch(urlArsenal)
 
             arsenalContainer.appendChild(CardArsenal);
 
-            CardArsenal.addEventListener('click', ()=>{
-                const containerModal = document.querySelector('.container-modal');
+            // MODAL ARSENAL
+            CardArsenal.addEventListener('click', () => {
                 containerModal.innerHTML = '';
                 containerModal.style.width = '50%';
                 containerModal.style.right = '25%';
+                containerModal.style.flexDirection = 'column';
+                containerModal.style.justifyContent = 'space-evenly';
 
                 const modalNameArsenal = document.createElement('h2');
                 const modalContainerStats = document.createElement('div');
+                const modalUlstats = document.createElement('ul');
+                const liDaño = document.createElement('li')
+                const liVelocidad = document.createElement('li')
+                const liPrecision = document.createElement('li')
+                const liRecarga = document.createElement('li')
                 const modalImgArsenal = document.createElement('img');
 
                 modalNameArsenal.innerText = arma.displayName;
                 modalImgArsenal.setAttribute('src', arma.displayIcon);
 
+                modalContainerStats.appendChild(modalUlstats);
+                modalUlstats.appendChild(liDaño);
+                liDaño.innerText = `Daño maximo: ${arma.weaponStats.damageRanges[0].headDamage}`;
+                modalUlstats.appendChild(liVelocidad);
+                liVelocidad.innerText = `Velocidad de disparo: ${arma.weaponStats.fireRate}`;
+                modalUlstats.appendChild(liPrecision);
+                liPrecision.innerText = `Precisión: ${arma.weaponStats.firstBulletAccuracy}`;
+                modalUlstats.appendChild(liRecarga);
+                liRecarga.innerText = `Tiempo de recarga : ${arma.weaponStats.reloadTimeSeconds}s`;
+
+
+
+
                 containerModal.appendChild(modalNameArsenal);
+                containerModal.appendChild(modalContainerStats);
                 containerModal.appendChild(modalImgArsenal);
                 modal.style.display = 'block';
             })
         })
     })
 
-
-function abrirMenu() {
+botonMenu.addEventListener('click', () => {
     const estadoMenu = headerMenu.classList.contains('active');
     if (estadoMenu) {
         headerMenu.classList.remove('active');
     } else {
         headerMenu.classList.add('active');
     }
-}
-
-botonMenu.addEventListener('click', abrirMenu)
+})
 
 botonCerrar.addEventListener('click', () => {
-
+    
+    containerModal.innerHTML = '';
     modal.style.display = 'none';
 })
