@@ -10,8 +10,7 @@ const urlArsenal = 'https://valorant-api.com/v1/weapons/?language=es-MX';
 const botonMenu = document.getElementById('movil-menu');
 const headerMenu = document.getElementById('header-menu');
 
-const modal = document.getElementById('modal')
-const containerModal = document.querySelector('.container-modal');
+const modal = document.getElementById('modal-agent')
 
 const botonCerrar = document.getElementById('botonCerrar');
 
@@ -41,10 +40,8 @@ fetch(urlAgents)
 
             //MODAL DE LOS AGENTES//
             CardAgent.addEventListener('click', () => {
-                const containInfo = document.createElement('div');
-                containInfo.classList.add('modal-info')
-                const containImg = document.createElement('div');
-                containImg.classList.add('modal-img')
+                const containInfo = document.getElementById('containInfo');
+                const containImg = document.getElementById('containImg');
                 containInfo.innerHTML = '';
                 containImg.innerHTML = '';
 
@@ -90,8 +87,6 @@ fetch(urlAgents)
                     slotHabilidad.classList.add('habilidad');
                 })
 
-                containerModal.appendChild(containInfo);
-                containerModal.appendChild(containImg);
                 modal.style.display = 'block';
             })
         });
@@ -119,37 +114,6 @@ fetch(urlMapas)
             CardMap.appendChild(imgMap);
 
             mapasContainer.appendChild(CardMap);
-
-            //MODAL DE MAPAS
-            CardMap.addEventListener('click', () => {
-                const containInfo = document.createElement('div');
-                containInfo.classList.add('modal-info')
-                const containImg = document.createElement('div');
-                containImg.classList.add('modal-img')
-                containInfo.innerHTML = '';
-                containImg.innerHTML = '';
-
-                const modalName = document.createElement('h2');
-                const imgInfoMap = document.createElement('img')
-                const imgModalMaps = document.createElement('img');
-
-                modalName.classList.add('modal-h2-name');
-                modalName.innerText = maps.displayName;
-
-                imgInfoMap.classList.add('modal-info-map')
-                imgModalMaps.classList.add('modal-img-map')
-
-                imgInfoMap.setAttribute('src', maps.displayIcon)
-                imgModalMaps.setAttribute('src', maps.splash);
-
-                containInfo.appendChild(modalName);
-                containInfo.appendChild(imgInfoMap);
-                containImg.appendChild(imgModalMaps);
-
-                containerModal.appendChild(containInfo);
-                containerModal.appendChild(containImg);
-                modal.style.display = 'block';
-            })
         })
     })
 
@@ -174,61 +138,22 @@ fetch(urlArsenal)
             CardArsenal.appendChild(imgArsenal);
 
             arsenalContainer.appendChild(CardArsenal);
-
-            // MODAL ARSENAL
-            CardArsenal.addEventListener('click', () => {
-                containerModal.innerHTML = '';
-                containerModal.classList.add('modal-arsenal');
-
-                const modalNameArsenal = document.createElement('h2');
-                const modalContainerStats = document.createElement('div');
-                modalContainerStats.classList.add('divStats')
-                const statsTitle = document.createElement('h3');
-                const modalUlstats = document.createElement('ul');
-                const liDaño = document.createElement('li')
-                const liVelocidad = document.createElement('li')
-                const liPrecision = document.createElement('li')
-                const liRecarga = document.createElement('li')
-                const modalImgArsenal = document.createElement('img');
-
-                modalNameArsenal.innerText = arma.displayName;
-                modalImgArsenal.setAttribute('src', arma.displayIcon);
-                modalImgArsenal.classList.add('imgArsenal');
-
-                modalContainerStats.appendChild(statsTitle);
-                statsTitle.innerText= "Stats del arma";
-                modalContainerStats.appendChild(modalUlstats);
-                modalUlstats.appendChild(liDaño);
-                liDaño.innerText = `Daño maximo: ${arma.weaponStats.damageRanges[0].headDamage}`;
-                modalUlstats.appendChild(liVelocidad);
-                liVelocidad.innerText = `Velocidad de disparo: ${arma.weaponStats.fireRate}`;
-                modalUlstats.appendChild(liPrecision);
-                liPrecision.innerText = `Precisión: ${arma.weaponStats.firstBulletAccuracy}`;
-                modalUlstats.appendChild(liRecarga);
-                liRecarga.innerText = `Tiempo de recarga : ${arma.weaponStats.reloadTimeSeconds}s`;
-
-                containerModal.appendChild(modalNameArsenal);
-                containerModal.appendChild(modalContainerStats);
-                containerModal.appendChild(modalImgArsenal);
-                modal.style.display = 'block';
-            })
         })
     })
 
-botonMenu.addEventListener('click', () => {
+
+function abrirMenu() {
     const estadoMenu = headerMenu.classList.contains('active');
     if (estadoMenu) {
         headerMenu.classList.remove('active');
     } else {
         headerMenu.classList.add('active');
     }
-})
+}
+
+botonMenu.addEventListener('click', abrirMenu)
 
 botonCerrar.addEventListener('click', () => {
-    const modalArsenal = containerModal.classList.contains('modal-arsenal');
-    if (modalArsenal) {
-        containerModal.classList.remove('modal-arsenal');
-    }
-    containerModal.innerHTML = '';
+
     modal.style.display = 'none';
 })
