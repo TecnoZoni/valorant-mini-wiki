@@ -10,7 +10,7 @@ const urlArsenal = 'https://valorant-api.com/v1/weapons/?language=es-MX';
 const botonMenu = document.getElementById('movil-menu');
 const headerMenu = document.getElementById('header-menu');
 
-const modal = document.getElementById('modal-agent')
+const modal = document.getElementById('modal')
 
 const botonCerrar = document.getElementById('botonCerrar');
 
@@ -165,6 +165,24 @@ fetch(urlArsenal)
             CardArsenal.appendChild(imgArsenal);
 
             arsenalContainer.appendChild(CardArsenal);
+
+            CardArsenal.addEventListener('click', ()=>{
+                const containerModal = document.querySelector('.container-modal');
+                containerModal.innerHTML = '';
+                containerModal.style.width = '50%';
+                containerModal.style.right = '25%';
+
+                const modalNameArsenal = document.createElement('h2');
+                const modalContainerStats = document.createElement('div');
+                const modalImgArsenal = document.createElement('img');
+
+                modalNameArsenal.innerText = arma.displayName;
+                modalImgArsenal.setAttribute('src', arma.displayIcon);
+
+                containerModal.appendChild(modalNameArsenal);
+                containerModal.appendChild(modalImgArsenal);
+                modal.style.display = 'block';
+            })
         })
     })
 

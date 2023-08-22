@@ -161,6 +161,7 @@ a {
 }
 
 h2 {
+    font-family: 'Proxima Nova Bold';
     font-size: 2rem;
     width: 100%;
     text-align: center;
@@ -351,6 +352,7 @@ footer {
     width: 100%;
     height: 100%;
     background-color: #00000085;
+    display: none;
 }
 
 .cerrar {
@@ -380,6 +382,9 @@ footer {
     margin: .5rem;
     box-shadow: #000 3px 5px 1rem;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
 }
 
 .modal-info {
@@ -425,7 +430,6 @@ footer {
 .modal-img {
     background: #000;
     width: 50%;
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -433,20 +437,23 @@ footer {
 }
 
 .modal-img img {
-    width: 80vw;
     height: 90vh;
     filter: drop-shadow(1px 4px 8px rgba(0, 0, 0, 1));
 }
 
-.modal-info-map{
+.modal-info-map {
     width: 100%;
     height: auto;
 }
 
-.modal-img-map{
+.modal-img-map {
     width: 100%;
-    height: auto;
 }
+
+.modal-img-map img{
+    width: 100vh;
+}
+
 
 
 /* Estilos responsivos */
@@ -542,10 +549,6 @@ footer {
         border-radius: 0;
     }
 
-    .modal-img img {
-        height: auto;
-    }
-
     .habilidad {
         font-size: 1rem;
     }
@@ -561,15 +564,15 @@ footer {
 }
 
 @media only screen and (max-width:500px) {
-.container-modal{
-    overflow-x: hidden;
-}
+    .container-modal {
+        overflow-x: hidden;
+    }
 
     .modal-parrafo {
         font-size: 1rem;
     }
 
-    .modal-img{
+    .modal-img {
         width: 100%;
         height: unset;
     }
@@ -580,6 +583,6 @@ footer {
     }
 
     .habilidad img {
-        width: 10vh;
+        width: 5vh;
     }
 }
