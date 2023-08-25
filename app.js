@@ -70,7 +70,9 @@ fetch(urlAgents)
                     const logoHabilidad = document.createElement('img');
 
                     nameHabilidad.innerText = habilidad.displayName;
-                    logoHabilidad.setAttribute('src', habilidad.displayIcon)
+                    if (habilidad.displayIcon) {
+                        logoHabilidad.setAttribute('src', habilidad.displayIcon)
+                    };
 
                     slotHabilidad.appendChild(nameHabilidad);
                     slotHabilidad.appendChild(logoHabilidad);
@@ -109,7 +111,8 @@ fetch(urlMapas)
                 const mapName = document.createElement('h2');
                 mapName.innerText = maps.displayName;
                 const infoMap = document.createElement('img');
-                infoMap.setAttribute('src', maps.displayIcon);
+                maps.displayIcon ? infoMap.setAttribute('src', maps.displayIcon) : infoMap.setAttribute('src', '/img/iconLaGaleria.png');
+
                 infoMap.classList.add('infoMap');
                 const imgMap = document.createElement('img');
                 imgMap.setAttribute('src', maps.splash);
@@ -129,58 +132,60 @@ fetch(urlArsenal)
     .then(data => {
         console.log(data);
         data.data.forEach(arma => {
-            const CardArsenal = document.createElement('div');
-            CardArsenal.classList.add("card-arsenal");
-            const nameArsenal = document.createElement('h3');
-            nameArsenal.classList.add("card-arsenal-name");
-            const imgArsenal = document.createElement('img');
-            imgArsenal.classList.add("card-arsenal-img");
-            imgArsenal.setAttribute('src', arma.displayIcon)
-            nameArsenal.innerText = arma.displayName
-            CardArsenal.appendChild(nameArsenal);
-            CardArsenal.appendChild(imgArsenal);
-            arsenalContainer.appendChild(CardArsenal);
+            if (arma.weaponStats) {
+                const CardArsenal = document.createElement('div');
+                CardArsenal.classList.add("card-arsenal");
+                const nameArsenal = document.createElement('h3');
+                nameArsenal.classList.add("card-arsenal-name");
+                const imgArsenal = document.createElement('img');
+                imgArsenal.classList.add("card-arsenal-img");
+                imgArsenal.setAttribute('src', arma.displayIcon)
+                nameArsenal.innerText = arma.displayName
+                CardArsenal.appendChild(nameArsenal);
+                CardArsenal.appendChild(imgArsenal);
+                arsenalContainer.appendChild(CardArsenal);
 
-            CardArsenal.addEventListener('click', () => {
-                containInfo.classList.add('containInfoArsenal');
-                containImg.classList.add('containImgArsenal');
+                CardArsenal.addEventListener('click', () => {
+                    containInfo.classList.add('containInfoArsenal');
+                    containImg.classList.add('containImgArsenal');
 
-                containerModal.classList.remove('container-modal');
-                containerModal.classList.add('containerModalArsenal');
+                    containerModal.classList.remove('container-modal');
+                    containerModal.classList.add('containerModalArsenal');
 
-                const arsenalName = document.createElement('h2');
-                arsenalName.innerText = arma.displayName;
-                const divStats = document.createElement('div');
-                divStats.classList.add('divStats')
-                const divStatTitle = document.createElement('h3');
-                divStatTitle.innerText = 'Stats del arma';
-                const ulStats = document.createElement('ul');
-                const dañoMaximo = document.createElement('li');
-                dañoMaximo.innerText = `Daño maximo: ${arma.weaponStats.damageRanges[0].headDamage}`;
-                const cadenciaDisparo = document.createElement('li');
-                cadenciaDisparo.innerText = `Cadencia de disparo: ${arma.weaponStats.fireRate}`;
-                const precision = document.createElement('li');
-                precision.innerText = `Precision: ${arma.weaponStats.firstBulletAccuracy}`;
-                const tiempoRecarga = document.createElement('li');
-                tiempoRecarga.innerText = `Tiempo de Recarga: ${arma.weaponStats.reloadTimeSeconds}s`;
+                    const arsenalName = document.createElement('h2');
+                    arsenalName.innerText = arma.displayName;
+                    const divStats = document.createElement('div');
+                    divStats.classList.add('divStats')
+                    const divStatTitle = document.createElement('h3');
+                    divStatTitle.innerText = 'Stats del arma';
+                    const ulStats = document.createElement('ul');
+                    const dañoMaximo = document.createElement('li');
+                    dañoMaximo.innerText = `Daño maximo: ${arma.weaponStats.damageRanges[0].headDamage}`;
+                    const cadenciaDisparo = document.createElement('li');
+                    cadenciaDisparo.innerText = `Cadencia de disparo: ${arma.weaponStats.fireRate}`;
+                    const precision = document.createElement('li');
+                    precision.innerText = `Precision: ${arma.weaponStats.firstBulletAccuracy}`;
+                    const tiempoRecarga = document.createElement('li');
+                    tiempoRecarga.innerText = `Tiempo de Recarga: ${arma.weaponStats.reloadTimeSeconds}s`;
 
-                const imgModalArsenal = document.createElement('img');
-                imgModalArsenal.setAttribute('src', arma.displayIcon);
+                    const imgModalArsenal = document.createElement('img');
+                    imgModalArsenal.setAttribute('src', arma.displayIcon);
 
 
-                divStats.appendChild(divStatTitle);
-                ulStats.appendChild(dañoMaximo);
-                ulStats.appendChild(cadenciaDisparo);
-                ulStats.appendChild(precision);
-                ulStats.appendChild(tiempoRecarga);
-                divStats.appendChild(ulStats);
+                    divStats.appendChild(divStatTitle);
+                    ulStats.appendChild(dañoMaximo);
+                    ulStats.appendChild(cadenciaDisparo);
+                    ulStats.appendChild(precision);
+                    ulStats.appendChild(tiempoRecarga);
+                    divStats.appendChild(ulStats);
 
-                containInfo.appendChild(arsenalName);
-                containInfo.appendChild(divStats);
-                containImg.appendChild(imgModalArsenal);
+                    containInfo.appendChild(arsenalName);
+                    containInfo.appendChild(divStats);
+                    containImg.appendChild(imgModalArsenal);
 
-                modal.style.display = 'block';
-            })
+                    modal.style.display = 'block';
+                })
+            }
         })
     })
 
