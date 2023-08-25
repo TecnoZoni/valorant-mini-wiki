@@ -492,13 +492,27 @@ footer {
     border-radius: 0 2rem 2rem 0;
 }
 
+.containInfoArsenal{
+    width: 60%;
+}
+
 .divStats{
     background-color:#111;
     color: #fff;
     font-family: Arial, Helvetica, sans-serif;
-    width: 75%;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
 }
 
+.divStats ul{
+    list-style: none;
+}
 
 /* Estilos responsivos */
 @media only screen and (max-width:1120px) {
@@ -510,6 +524,17 @@ footer {
 
     .habilidad {
         font-size: .7rem;
+    }
+
+    .containImgArsenal{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .containImgArsenal img{
+        width: 80%;
     }
 }
 
@@ -627,6 +652,19 @@ footer {
         width: 100%;
         border-radius: 0;
     }
+
+    .containInfoArsenal{
+        width: 90%;
+    }
+
+    .containImgArsenal img{
+        width: 90%;
+    }
+
+    .divStats{
+        padding: .5rem;
+        font-size: .9rem;
+    }
 }
 
 @media only screen and (max-width:500px) {
@@ -650,5 +688,10 @@ footer {
 
     .habilidad img {
         width: 5vh;
+    }
+
+    .divStats{
+        padding: .5rem;
+        font-size: .8rem;
     }
 }
