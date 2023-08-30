@@ -13,11 +13,16 @@ const botonCerrar = document.getElementById('botonCerrar');
 const containerModal = document.getElementById('containerModal');
 //peticion a la API pidiendo la informacion
 //tomo la respuesta y la trasnformo en JSON, luego la muestro en consola para saber como llega la informacion y por ultimo con un ciclo forEach empiezo a tomar los datos y a crear las Tarjetas de los diferentes agentes, mapas y arsenal.
+
+let agentsData = null;
+let mapsData = null;
+let arsenalData = null;
+
 fetch(urlAgents)
     .then(response => response.json())
     .then(data => {
-        console.log(data);
-        data.data.forEach(agents => {
+        agentsData = data.data;
+        agentsData.forEach(agents => {
             // CARGANDO AGENTES A LA PAGINA //
             const CardAgent = document.createElement('div');
             const imgAgent = document.createElement('img');
@@ -64,7 +69,6 @@ fetch(urlAgents)
                 containImg.appendChild(imgModalAgent);
 
                 agents.abilities.forEach(habilidad => {
-                    console.log(habilidad);
                     const slotHabilidad = document.createElement('div');
                     const nameHabilidad = document.createElement('h3')
                     const logoHabilidad = document.createElement('img');
@@ -90,8 +94,8 @@ fetch(urlAgents)
 fetch(urlMapas)
     .then(response => response.json())
     .then(data => {
-        console.log(data);
-        data.data.forEach(maps => {
+        mapsData = data.data;
+        mapsData.forEach(maps => {
             const CardMap = document.createElement('div');
             CardMap.classList.add("card-map");
             const nameMap = document.createElement('h3');
@@ -126,12 +130,13 @@ fetch(urlMapas)
             })
         })
     })
+    .catch(err => console.log(err))
 
 fetch(urlArsenal)
     .then(response => response.json())
     .then(data => {
-        console.log(data);
-        data.data.forEach(arma => {
+        arsenalData = data.data;
+        arsenalData.forEach(arma => {
             if (arma.weaponStats) {
                 const CardArsenal = document.createElement('div');
                 CardArsenal.classList.add("card-arsenal");
@@ -188,6 +193,7 @@ fetch(urlArsenal)
             }
         })
     })
+    .catch(err => console.log(err))
 
 
 function abrirMenu() {
